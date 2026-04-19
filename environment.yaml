@@ -1,0 +1,76 @@
+name: omics
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  # --- Python core ---
+  - python=3.11
+  - pip
+
+  # --- Scientific stack ---
+  - numpy
+  - pandas
+  - scipy
+  - statsmodels
+
+  # --- Visualization ---
+  - matplotlib
+  - seaborn
+
+  # --- Single-cell (Python) ---
+  - scanpy>=1.10
+  - anndata>=0.10
+
+  # --- Genomics utilities ---
+  - pybedtools
+  - bedtools
+  - samtools
+  - htslib
+
+  # --- Workflow ---
+  - snakemake-minimal>=8.0
+  - snakemake-executor-plugin-cluster-generic  # optional HPC support
+
+  # --- Jupyter ---
+  - jupyterlab
+  - ipykernel
+  - nb_conda_kernels
+
+  # --- R base (needed to call R scripts via subprocess) ---
+  - r-base>=4.3
+  - rpy2
+
+  # --- Misc ---
+  - tqdm
+  - pyyaml
+  - click
+
+  - pip:
+    # scATAC-seq (Apple Silicon wheels available)
+    - snapatac2>=2.6
+
+    # Leiden clustering (required by scanpy sc.tl.leiden)
+    - leidenalg
+
+    # LOESS smoothing for Seurat v3 HVG selection (required by scanpy)
+    - scikit-misc
+
+    # Multi-modal object + paired RNA+ATAC
+    - muon>=0.1.6
+
+    # ATAC peak calling (MACS3 = Python 3 native successor to MACS2)
+    - macs3
+
+    # TF motif enrichment (Python port of ChromVAR)
+    - pychromvar
+
+    # ABC model scoring
+    - pyabc-score  # or reimplemented; see scripts/linkage/method3_abc.py
+
+    # ldsc: Python 2.7 tool, not pip-installable into this env.
+    # Runs via Docker (linux/amd64 via Rosetta on Apple Silicon):
+    #   docker build --platform linux/amd64 -f docker/Dockerfile.ldsc -t gutpro-ldsc .
+    #   bash scripts/utils/run_ldsc.sh --h2 <sumstats> ...
+    # Repo cloned at: data/tools/ldsc/

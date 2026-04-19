@@ -1,0 +1,19 @@
+Method	Compartment	IBD	IBD p	Height	Height p	EA	EA p
+1. Distance window	epithelial	4.49 ± 0.73***	3.0e-06	2.57 ± 0.39***	5.4e-05	1.81 ± 0.64	0.216
+1. Distance window	immune	4.10 ± 0.49***	1.4e-08	2.24 ± 0.18***	2.7e-11	1.75 ± 0.38	0.054
+1. Distance window	stromal	4.36 ± 0.89***	2.4e-04	5.49 ± 0.58***	3.6e-12	1.75 ± 0.83	0.377
+2. Cicero co-access	epithelial	7.10 ± 2.00**	0.003	3.75 ± 0.61***	9.3e-06	2.07 ± 0.93	0.258
+2. Cicero co-access	immune	3.91 ± 0.51***	2.7e-07	2.19 ± 0.20***	5.5e-09	1.69 ± 0.40	0.090
+2. Cicero co-access	stromal	6.26 ± 1.44***	4.5e-04	5.47 ± 0.69***	7.3e-10	1.72 ± 1.33	0.594
+3. ABC (power-law)	epithelial	7.21 ± 1.98**	0.002	6.96 ± 1.18***	7.2e-07	2.55 ± 3.10	0.619
+3. ABC (power-law)	immune	2.66 ± 0.51**	0.002	2.02 ± 0.21***	2.1e-06	1.42 ± 0.42	0.327
+3. ABC (power-law)	stromal	6.99 ± 2.37*	0.013	7.58 ± 1.10***	6.2e-09	2.86 ± 3.17	0.560
+4A. Paired Multiome r	epithelial	20.96 ± 8.70*	0.020	8.86 ± 3.49*	0.025	15.12 ± 8.41	0.088
+4A. Paired Multiome r	immune	10.70 ± 4.68*	0.036	-0.63 ± 1.72	0.345	-0.57 ± 3.84	0.682
+4A. Paired Multiome r	stromal	14.31 ± 5.26*	0.011	3.83 ± 3.37	0.402	-3.37 ± 4.68	0.342
+4B. Cross-cohort r	epithelial	21.64 ± 10.43*	0.048	4.76 ± 3.13	0.232	7.26 ± 10.18	0.537
+4B. Cross-cohort r	immune	13.12 ± 5.23*	0.018	-0.75 ± 1.71	0.308	-0.22 ± 4.66	0.793
+4B. Cross-cohort r	stromal	-1.00 ± 4.53	0.660	-0.89 ± 2.02	0.354	-5.99 ± 5.09	0.160
+5. rE2G (K562; binary ≈ continuous)	epithelial	4.49 ± 0.73***	3.0e-06	2.57 ± 0.39***	5.4e-05	1.81 ± 0.64	0.216
+5. rE2G (K562; binary ≈ continuous)	immune	4.10 ± 0.49***	1.4e-08	2.24 ± 0.18***	2.7e-11	1.75 ± 0.38	0.054
+5. rE2G (K562; binary ≈ continuous)	stromal	4.36 ± 0.89***	2.4e-04	5.49 ± 0.58***	3.6e-12	1.74 ± 0.83	0.379
