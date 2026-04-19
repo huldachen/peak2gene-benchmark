@@ -1,0 +1,12 @@
+cell_type_atac	n	mean_agreement	median_agreement
+CD8	5585	2.984184e-05	0.0
+Plasma	5160	1.2919897e-05	0.0
+Mono_Macrophages	4687	0.031391796	0.0
+CD4	3570	0.0	0.0
+B Cells	3267	0.0	0.0
+NK	1269	0.0	0.0
+Mast	813	0.0	0.0
+CyclingImmune	494	0.0023616736	0.0
+ILC	150	0.0	0.0
+DC	130	0.0	0.0
+T Cells	16	0.0	0.0

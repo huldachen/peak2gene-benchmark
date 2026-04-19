@@ -1,0 +1,17 @@
+cell_type_atac	n	mean_agreement	median_agreement
+Myofibroblasts/SM 1	8724	0.00036680422	0.0
+Crypt Fibroblasts 1 WNT2B+	4633	0.0	0.0
+Crypt Fibroblasts 3 RSPO3+	3736	0.00082976447	0.0
+Myofibroblasts/SM DES High	2872	0.67561513	0.7
+Endothelial-CD36+ Microvascular	1964	0.036778685	0.033333335
+Myofibroblasts/SM 3	1707	0.0	0.0
+Crypt Fibroblasts 2	1616	2.0627063e-05	0.0
+Villus Fibroblasts WNT5B+	1474	0.0	0.0
+Glia	1391	0.2892164	0.3
+Myofibroblasts/SM 2	1052	0.0	0.0
+Lymphatic Endothelial Cells	1047	9.551099e-05	0.0
+Pericytes	1026	0.00035737493	0.0
+Endothelial-Venules	931	0.06655926	0.06666667
+ICC	367	0.033878297	0.033333335
+Neurons	132	0.041919194	0.033333335
+Adipocytes	60	0.00055555557	0.0

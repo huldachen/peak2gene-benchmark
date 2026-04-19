@@ -1,0 +1,21 @@
+cell_type_atac	n	mean_agreement	median_agreement
+TA1	9737	0.03434665	0.033333335
+CyclingTA 1	6797	0.024893338	0.0
+TA2	5784	0.00018441679	0.0
+Immature Enterocytes	5425	0.17352381	0.16666667
+Immature Goblet	5043	0.03306233	0.033333335
+Enterocytes	4459	0.6063766	0.6666667
+Best4+ Enterocytes	2431	0.0044700396	0.0
+Stem	2237	0.0	0.0
+Goblet	1375	0.0007515152	0.0
+CyclingTA 2	719	0.0	0.0
+Tuft	155	0.0	0.0
+Enterochromaffin	137	0.0	0.0
+EnteroendocrineUn	84	0.0	0.0
+L Cells	67	0.0	0.0
+EnteroendocrineUn 1	64	0.0	0.0
+NEUROG3high	33	0.0	0.0
+I Cells	15	0.0	0.0
+D Cells	11	0.0	0.0
+Mo Cells	5	0.0	0.0
+S Cells	2	0.0	0.0

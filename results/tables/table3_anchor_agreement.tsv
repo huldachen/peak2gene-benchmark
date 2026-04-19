@@ -1,0 +1,16 @@
+Compartment	Cell type	n cells	Mean agreement	Median agreement
+epithelial	[ ALL — 20 cell types ]	44580	0.097	(see row-level)
+epithelial	Enterocytes	4459	0.606	0.667
+epithelial	TA1	9737	0.034	0.033
+epithelial	CyclingTA 1	6797	0.025	0.000
+epithelial	TA2	5784	0.000	0.000
+immune	[ ALL — 11 cell types ]	25141	0.006	(see row-level)
+immune	Mono_Macrophages	4687	0.031	0.000
+immune	CD8	5585	0.000	0.000
+immune	Plasma	5160	0.000	0.000
+stromal	[ ALL — 16 cell types ]	32732	0.076	(see row-level)
+stromal	Myofibroblasts/SM DES High	2872	0.676	0.700
+stromal	Glia	1391	0.289	0.300
+stromal	Crypt Fibroblasts 3 RSPO3+	3736	0.001	0.000
+stromal	Myofibroblasts/SM 1	8724	0.000	0.000
+stromal	Crypt Fibroblasts 1 WNT2B+	4633	0.000	0.000

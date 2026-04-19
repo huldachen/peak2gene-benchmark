@@ -1,0 +1,312 @@
+# =============================================================================
+# GutCRE Benchmark — Master Configuration
+# All paths are relative to the project root.
+# Edit this file to switch datasets, thresholds, or method parameters.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Genome reference
+# -----------------------------------------------------------------------------
+genome:
+  assembly: hg38
+  chrom_sizes: data/raw/reference/hg38.chrom.sizes
+  blacklist: data/raw/reference/hg38_blacklist.bed  # ENCODE blacklist
+  gtf: data/raw/reference/gencode.v44.annotation.gtf
+
+# -----------------------------------------------------------------------------
+# Datasets
+# -----------------------------------------------------------------------------
+datasets:
+  hickey2023:
+    description: "Hickey et al. 2023 Science — gut cell atlas, 9 donors × 8 GI regions"
+    dryad_rna:  "https://datadryad.org/stash/dataset/doi:10.5061/dryad.8pk0p2ns8"
+    dryad_atac: "https://datadryad.org/stash/dataset/doi:10.5061/dryad.0zpc8672f"
+    license: CC0
+
+    # ── Cohort structure ──────────────────────────────────────────────────────
+    # The dataset contains TWO distinct cohorts (confirmed from metadata CSVs):
+    #
+    #   RNA cohort  (Multiome=No):  donors B001, B004, B005
+    #     - Separate scRNA-seq runs; per-sample MTX trios on Dryad RNA deposit
+    #     - Colon samples available on Dryad (verified against metadata):
+    #         B001-A-301 (Sigmoid), B001-A-401 (Transverse)
+    #         B004-A-204 (Ascending)
+    #         B005-A-201 (Ascending)
+    #
+    #   ATAC/Multiome cohort (Multiome=Yes):  donors B006, B008–B012
+    #     - True 10x Multiome (paired RNA+ATAC per cell)
+    #     - Per-sample fragment files on Dryad ATAC deposit
+    #     - Pre-computed aggregated peak matrices on Dryad ATAC deposit
+    #       (already cell-type resolved; preferred ATAC input)
+    #
+    # Pipeline strategy (pseudo-bulk):
+    #   - RNA: per-cell-type pseudo-bulk from RNA cohort scRNA-seq
+    #   - ATAC: pre-computed peak matrices from Multiome cohort
+    #   - Cell types: transferred from published annotation TSVs (separate per cohort)
+    #   - Linkage methods: all 5 operate on pseudo-bulk matrices per cell type
+    # ─────────────────────────────────────────────────────────────────────────
+
+    # Raw files (downloaded by download_hickey_dryad.py)
+    rna_dir:    data/raw/hickey2023/rna          # subdirs: {sample_id}/
+    atac_dir:   data/raw/hickey2023/atac         # peak matrices + BED files
+    cell_types: data/raw/hickey2023/cell_types   # published Hickey cell-type TSVs
+    metadata:   data/raw/hickey2023/metadata     # sample_location_metadata.csv
+
+    # Merged AnnData objects (produced by scripts/data/load_hickey.py)
+    rna_matrix:  data/processed/hickey2023/rna_merged.h5ad
+    atac_matrix: data/processed/hickey2023/atac_merged.h5ad
+
+    # RNA cohort — colon samples available on Dryad (Multiome=No, donors B001/B004/B005)
+    # Location confirmed against sample_location_metadata.csv
+    rna_colon_samples:
+      - B001-A-301   # donor B001, Sigmoid colon
+      - B001-A-401   # donor B001, Transverse colon
+      - B004-A-204   # donor B004, Ascending colon
+      - B005-A-201   # donor B005, Ascending colon
+
+    # ATAC/Multiome cohort — colon samples (Multiome=Yes, donors B006/B008–B012)
+    # Used for fragment-based ATAC analysis; peak matrices aggregate all of these
+    atac_multiome_colon_samples:
+      - B006-A-001   # donor B006, Descending colon
+      - B006-A-002   # donor B006, Sigmoid colon
+      - B006-A-101   # donor B006, Transverse colon
+      - B006-A-201   # donor B006, Ascending colon
+      - B008-A-001   # donor B008, Sigmoid colon
+      - B008-A-002   # donor B008, Descending colon
+      - B008-A-101   # donor B008, Transverse colon
+      - B008-A-201   # donor B008, Ascending colon
+      - B009-A-001   # donor B009, Sigmoid colon
+      - B009-A-101   # donor B009, Transverse colon
+      - B010-A-001   # donor B010, Sigmoid colon
+      - B010-A-002   # donor B010, Descending colon
+      - B010-A-101   # donor B010, Transverse colon
+      - B010-A-201   # donor B010, Ascending colon
+      - B011-A-001   # donor B011, Sigmoid colon
+      - B011-A-002   # donor B011, Descending colon
+      - B011-A-101   # donor B011, Transverse colon
+      - B011-A-201   # donor B011, Ascending colon
+      - B012-A-001   # donor B012, Sigmoid colon
+      - B012-A-002   # donor B012, Descending colon
+      - B012-A-101   # donor B012, Transverse colon
+      - B012-A-201   # donor B012, Ascending colon
+
+    # Cell-type compartments to analyse (pre-computed peak matrices exist for each)
+    compartments: [colon_epithelial, immune, stromal]
+
+    # Fragment files (per-sample, large — download on demand)
+    # Path pattern: data/raw/hickey2023/atac/{sample_id}/atac_fragments.tsv.gz
+
+  pbmc_10x:
+    description: "10x Genomics PBMC multiome — Phase 1 env validation dataset"
+    h5_file:   data/raw/pbmc10x/filtered_feature_bc_matrix.h5
+    fragments: data/raw/pbmc10x/atac_fragments.tsv.gz
+    # Processed (from 00_pbmc_tutorial.ipynb)
+    rna_matrix:  data/processed/pbmc10x/pbmc_mdata_qc.h5mu
+    atac_matrix: data/processed/pbmc10x/pbmc_mdata_qc.h5mu
+
+  ibd_preprint:
+    description: "IBD pediatric multiome (bioRxiv Feb 2024) — check GEO at project start"
+    status: PENDING  # update when confirmed available
+    geo_accession: null
+    rna_matrix: data/raw/ibd_preprint/rna_matrix.h5ad
+    atac_matrix: data/raw/ibd_preprint/atac_matrix.h5ad
+
+# Primary dataset to use in the main pipeline
+active_dataset: hickey2023
+
+# -----------------------------------------------------------------------------
+# GWAS and fine-mapping data
+# -----------------------------------------------------------------------------
+gwas:
+  ibd_summary_stats: data/gwas/liu2015_ibd.sumstats.gz
+  cd_summary_stats: data/gwas/jostins2012_cd.sumstats.gz
+  uc_summary_stats: data/gwas/jostins2012_uc.sumstats.gz
+  fine_mapped_variants: data/gwas/ibd_finemapped_ppa.tsv  # PPA >= 0.1
+  ld_panel_dir: data/gwas/1kg_eur/           # 1000 Genomes EUR LD reference
+
+# -----------------------------------------------------------------------------
+# Hi-C data (for ABC model, Method 3)
+# -----------------------------------------------------------------------------
+hic:
+  primary:
+    label: CD4T_primary
+    description: "Primary human CD4+ T cells (naive/Th1/Th17) — GSE126117"
+    geo_accession: GSE126117
+    hic_matrix: data/raw/hic/cd4t_hic.cool  # or .hic — convert with hic2cool
+  fallback:
+    label: GM12878
+    description: "GM12878 B-lymphoblastoid cell line — ENCODE"
+    encode_id: ENCFF799QGA
+    hic_matrix: data/raw/hic/gm12878_hic.cool
+
+# -----------------------------------------------------------------------------
+# QC thresholds
+# -----------------------------------------------------------------------------
+qc:
+  scrna:
+    min_genes: 200
+    max_genes: 5000
+    max_pct_mito: 20       # percent; adjust per dataset after inspection
+    n_top_genes: 3000      # highly variable genes
+
+  scatac:
+    min_tss_enrichment: 4  # minimum; flag cells < 8 in QC report
+    max_nucleosome_signal: 2.0
+    min_unique_fragments: 1000
+    max_blacklist_ratio: 0.05
+
+# -----------------------------------------------------------------------------
+# Cell type marker genes (for annotation)
+# -----------------------------------------------------------------------------
+cell_type_markers:
+  T_cell:    [CD3E, CD3D, CD3G]
+  CD4_T:     [CD4, IL7R, CCR7]
+  CD8_T:     [CD8A, CD8B, GZMB]
+  NK:        [NCAM1, KLRB1, NKG7]
+  B_cell:    [MS4A1, CD19, CD79A]
+  Myeloid:   [CD14, FCGR3A, LYZ]
+  DC:        [ITGAX, CLEC9A, CD1C]
+  Mast:      [TPSAB1, KIT, CPA3]
+  Epithelial:    [EPCAM, CDH1, KRT18]
+  Fibroblast:    [COL1A1, COL3A1, DCN]
+  Smooth_muscle: [ACTA2, MYH11, TAGLN]
+
+# -----------------------------------------------------------------------------
+# Peak-gene linkage parameters
+# -----------------------------------------------------------------------------
+linkage:
+  method1_distance:
+    window_kb: 500          # ±500 kb around gene TSS
+
+  method2_cicero:
+    r_threshold: 0.05       # minimum Pearson r
+    fdr_threshold: 0.05     # Benjamini-Hochberg FDR
+
+  method3_abc:
+    abc_score_threshold: 0.02   # per Fulco et al. 2019
+    hic_source: primary         # "primary" (CD4T) or "fallback" (GM12878)
+    run_both_hic: true          # also run with fallback for comparison
+
+  method4_archr:
+    r_threshold: 0.45       # ArchR default corCutOff
+    fdr_threshold: 0.01
+    max_dist_kb: 250        # maxDist parameter in ArchR
+
+  method5_re2g:
+    description: "ENCODE-rE2G (Fulco/Engreitz 2024) — CRISPRi-trained gradient-boosted model"
+    repo: "https://github.com/EngreitzLab/ENCODE_rE2G"
+    score_threshold: 0.165       # authors' recommended operating point (high recall)
+    score_threshold_strict: 0.4  # sensitivity analysis (high precision)
+    hic_source: primary          # same as ABC: CD4T preferred, GM12878 fallback
+    use_average_contact_fallback: true  # for cell types without matched Hi-C (epithelial, stromal)
+
+# -----------------------------------------------------------------------------
+# Evaluation parameters
+# =============================================================================
+# PRE-COMMITMENT (v3): these thresholds are locked before any enrichment
+# results are examined. Config hash is logged at first analysis run.
+# -----------------------------------------------------------------------------
+evaluation:
+  # Primary metric: IBD fine-mapping enrichment (Fisher's exact test)
+  fine_mapping_ppa_cutoff: 0.1    # PRIMARY — variants with PPA >= this included
+  fine_mapping_ppa_cutoff_sensitivity: 0.5  # SENSITIVITY — repeat at stricter threshold
+  fisher_alternative: greater     # one-sided enrichment test
+
+  # Permutation control (v3): match null SNPs on MAF, LD score, distance-to-TSS
+  n_permutations: 1000            # null variant sets for empirical p-value
+  permutation_seed: 42
+
+  # ── Cell-type inclusion thresholds ─────────────────────────────────────────
+  # min_peak_set_fraction governs individual cell-type sLDSC inclusion.
+  # Origin: heuristic from sLDSC literature (~49K SNPs in annotation at 0.5%
+  # gives stable jackknife SE with 1KG EUR ~9.8M SNP reference panel).
+  # Our compartment-level peak sets all pass easily (3.9–8.2% of hg38).
+  # This threshold will only be binding for rare individual cell types
+  # (e.g. Pericytes n=65 RNA cells, NK n=1269 ATAC cells).
+  min_peak_set_fraction: 0.005    # ≥0.5% of genome required for sLDSC inclusion
+  min_cells_per_celltype: 50      # minimum cells for correlation-based methods
+
+  # ── sLDSC coverage note ─────────────────────────────────────────────────────
+  # Actual compartment genome coverage (confirmed 2026-04-16, fixed 500 bp peaks):
+  #   colon_epithelial : 509,414 peaks, 8.22% of hg38
+  #   immune           : 242,814 peaks, 3.92% of hg38
+  #   stromal          : 376,977 peaks, 6.08% of hg38
+  # Epithelial at 8.2% is at the upper end for sLDSC enrichment analyses
+  # (typical is 1–5% per cell type). This produces conservative fold-enrichment
+  # estimates for epithelial. Sensitivity analysis planned: repeat sLDSC with
+  # top-50% most accessible peaks per compartment (~4% coverage for epithelial).
+  sldsc_sensitivity_peak_quantile: 0.5   # top fraction of peaks by mean accessibility
+
+  # Secondary metric: GWAS heritability enrichment (sLDSC)
+  ldsc_n_blocks: 200              # jackknife blocks for SE estimation
+
+  # Secondary metric: eQTL colocalization (GTEx colon + IIBDGC)
+  coloc_pp_h4_threshold: 0.5      # PP.H4 >= 0.5 for colocalized hits
+  coloc_use_smr_heidi: true       # also run SMR/HEIDI as sensitivity
+
+  # ── Cell types to evaluate ──────────────────────────────────────────────────
+  # Names must match exactly the cell_type values in the loaded AnnData objects.
+  # Confirmed from rna_qc.h5ad and atac_{compartment}.h5ad obs["cell_type"].
+  # RNA cohort cell types used for correlation-based linkage (Methods 2, 4).
+  # ATAC cohort cell types used for peak-based analyses (all methods).
+  cell_types_to_evaluate:
+    # Immune (present in both RNA and ATAC with sufficient cells)
+    - "CD4"                         # T helper cells
+    - "CD8"                         # Cytotoxic T cells
+    - "B Cells"                     # B lymphocytes
+    - "Mono_Macrophages"            # Monocytes / macrophages
+    # Epithelial (dominant compartment; use abundant types for correlation methods)
+    - "TA1"                         # Transit-amplifying 1 (n=9737 ATAC, n=1778 RNA)
+    - "TA2"                         # Transit-amplifying 2 (n=5784 ATAC, n=1786 RNA)
+    - "Enterocytes"                  # Mature absorptive (n=4459 ATAC, n=977 RNA)
+    - "Goblet"                       # Mucus-secreting (n=1375 ATAC, n=360 RNA)
+    - "Stem"                         # Intestinal stem cells (n=2237 ATAC, n=310 RNA)
+    # Stromal
+    - "Myofibroblasts/SM 1"          # Dominant stromal type (n=8724 ATAC, n=722 RNA)
+    - "Crypt Fibroblasts 1 WNT2B+"   # WNT-secreting fibroblasts (n=4633 ATAC)
+
+  # Compartment pooling when individual cell counts or peak sets fall below threshold.
+  # Cell type names confirmed from actual data (2026-04-16).
+  compartments:
+    T_cell_compartment:
+      - "CD4"
+      - "CD8"
+      - "NK"
+    Myeloid_compartment:
+      - "Mono_Macrophages"
+      - "Plasma"
+    Epithelial_abundant:
+      - "TA1"
+      - "TA2"
+      - "Enterocytes"
+      - "Immature Enterocytes"
+      - "Immature Goblet"
+      - "Goblet"
+      - "CyclingTA 1"
+      - "Stem"
+    Stromal_compartment:
+      - "Myofibroblasts/SM 1"
+      - "Myofibroblasts/SM DES High"
+      - "Crypt Fibroblasts 1 WNT2B+"
+      - "Crypt Fibroblasts 2"
+      - "Crypt Fibroblasts 3 RSPO3+"
+
+# -----------------------------------------------------------------------------
+# Output paths
+# -----------------------------------------------------------------------------
+output:
+  processed: data/processed/
+  results: results/
+  figures: results/figures/
+  linkage_tables: results/linkage/
+  evaluation: results/evaluation/
+  ldsc: results/ldsc/
+
+# -----------------------------------------------------------------------------
+# Compute
+# -----------------------------------------------------------------------------
+compute:
+  threads: 8              # default threads per rule
+  abc_threads: 4          # ABC model is memory-bound; fewer threads
+  mem_mb_default: 16000
+  mem_mb_abc: 48000       # up to 48 GB for full-genome ABC
