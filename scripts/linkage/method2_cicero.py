@@ -1,11 +1,19 @@
 """
-Method 2 - Cicero-style co-accessibility -> peak-gene linkage.
+Method 2a - Co-accessibility (Pearson on KNN meta-cells) -> peak-gene linkage.
 
-A Python implementation of Cicero (Pliner et al., Mol. Cell 2018): LSI
-embedding of binarised single-cell ATAC, KNN meta-cell aggregation,
-per-chromosome sliding-window peak-peak Pearson correlation, and promoter-
-anchor projection to derive peak-gene links. Emits raw Pearson correlations
-(matching ArchR's ``getCoAccessibility``) with a default threshold of 0.25.
+  Note: filename is `method2_cicero.py` (kept for backwards compatibility
+  with imports - see `method2b_coaccess_glasso.py`). Canonical method label
+  in figures, tables, and config is **Method 2a**. The companion script for
+  Method 2b (canonical Cicero with GLASSO partial correlations) lives in
+  `method2b_coaccess_glasso.py`.
+
+
+Inspired by Cicero (Pliner et al., Mol. Cell 2018) and equivalent to ArchR's
+``getCoAccessibility()`` (Granja et al., Nat. Genet. 2021). LSI embedding of
+binarised single-cell ATAC, KNN meta-cell aggregation, per-chromosome
+sliding-window peak-peak Pearson correlation, and promoter-anchor projection
+to derive peak-gene links. Emits raw Pearson correlations (no graphical lasso)
+with a default threshold of 0.25.
 
 Usage
 -----

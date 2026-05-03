@@ -1,6 +1,13 @@
 """
 Method 4A - Paired peak-gene Pearson correlation on Multiome cells.
 
+  Filename note: file is `method4_paired.py` (no 'a') - canonical method
+  label `method4a_paired` is used in figures, tables, config, and
+  `build_annotations.py:METHOD_SOURCES`. Cosmetic mismatch only; renaming
+  would cascade through `method4_crosscohort.py` and
+  `method4b_anchor_diagnostic.py` imports.
+
+
 For every peak x gene pair within +/- window_bp of the gene's TSS, computes
 the Pearson correlation between peak accessibility and gene expression
 across KNN-aggregated meta-cells drawn from paired Multiome nuclei. Returns

@@ -2,9 +2,12 @@ Method	Compartment	IBD	Height	EA
 1. Distance window	epithelial	4.5***	2.6***	1.8
 1. Distance window	immune	4.1***	2.2***	1.7
 1. Distance window	stromal	4.4***	5.5***	1.7
-2. Cicero co-access	epithelial	7.1**	3.7***	2.1
-2. Cicero co-access	immune	3.9***	2.2***	1.7
-2. Cicero co-access	stromal	6.3***	5.5***	1.7
+2a. Co-access (Pearson)	epithelial	7.1**	3.7***	2.1
+2a. Co-access (Pearson)	immune	3.9***	2.2***	1.7
+2a. Co-access (Pearson)	stromal	6.3***	5.5***	1.7
+2b. Co-access (GLASSO)	epithelial	6.3**	4.9**	2.5
+2b. Co-access (GLASSO)	immune	8.2	5.7***	2.1
+2b. Co-access (GLASSO)	stromal	5.8**	6.2***	2.4
 3. ABC (power-law)	epithelial	7.2**	7.0***	2.5
 3. ABC (power-law)	immune	2.7**	2.0***	1.4
 3. ABC (power-law)	stromal	7.0*	7.6***	2.9

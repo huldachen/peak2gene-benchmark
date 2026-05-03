@@ -80,7 +80,7 @@ def build_figure():
     ax.axis("off")
 
     fig.suptitle(
-        "Figure 2.  Data flow: how RNA and ATAC cohorts feed the 5 peak–gene linkage methods",
+        "Figure 2.  Data flow: how RNA and ATAC cohorts feed the six peak-gene linkage methods",
         fontsize=13, fontweight="bold", x=0.04, ha="left", y=0.97,
     )
 

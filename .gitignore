@@ -12,13 +12,15 @@
 # Ignore full files:
 results/linkage/method1/*.tsv
 results/linkage/method2/*.tsv
+results/linkage/method2b/*.tsv
 results/linkage/method3/*.tsv
 results/linkage/method4_paired/*.tsv
 results/linkage/method4_crosscohort/*.tsv
 results/linkage/method5/*.tsv
-# …but keep the {compartment}_sample.tsv files:
+# ...but keep the {compartment}_sample.tsv files:
 !results/linkage/method1/*_sample.tsv
 !results/linkage/method2/*_sample.tsv
+!results/linkage/method2b/*_sample.tsv
 !results/linkage/method3/*_sample.tsv
 !results/linkage/method4_paired/*_sample.tsv
 !results/linkage/method4_crosscohort/*_sample.tsv
