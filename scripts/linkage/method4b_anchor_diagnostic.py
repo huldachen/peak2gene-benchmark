@@ -1,4 +1,11 @@
 """
+Diagnostic for Method 4B (cross-cohort anchor transfer) - NOT a linkage method itself.
+
+  This script does not produce peak-gene links; it produces the
+  anchor-agreement statistics shown in Table 3. The `4b_` prefix refers
+  to the *target* method whose anchor-transfer behaviour we're diagnosing
+  (Method 4B = cross-cohort r; see `method4_crosscohort.py`).
+
 Method 4B diagnostic: anchor-transfer cell-type agreement per compartment.
 
 For each ATAC cell, finds its top-K RNA anchors (same gene-activity KNN as

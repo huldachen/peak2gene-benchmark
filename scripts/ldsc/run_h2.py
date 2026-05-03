@@ -57,6 +57,10 @@ def run_h2_one(trait: str, annot_name: str) -> tuple[str, str, bool, str]:
     out_dir.mkdir(parents=True, exist_ok=True)
     out_prefix = out_dir / f"{trait}__{annot_name}"
 
+    # Skip if .results already exists (makes --all properly idempotent)
+    if out_prefix.with_suffix(".results").exists():
+        return trait, annot_name, True, "already exists"
+
     cmd = [
         "conda", "run", "-n", LDSC_ENV, "ldsc.py",
         "--h2",           str(sumstats),

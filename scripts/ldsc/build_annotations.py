@@ -37,6 +37,7 @@ LDSC_ENV      = "ldsc"
 METHOD_SOURCES = {
     "method1_distance":     "results/linkage/method1",
     "method2_cicero":       "results/linkage/method2",
+    "method2b_glasso":      "results/linkage/method2b",
     "method3_abc":          "results/linkage/method3",
     "method4a_paired":      "results/linkage/method4_paired",
     "method4b_crosscohort": "results/linkage/method4_crosscohort",

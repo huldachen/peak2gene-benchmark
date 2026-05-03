@@ -1,6 +1,13 @@
 """
 Method 4B - Cross-cohort peak-gene correlation via anchor transfer.
 
+  Filename note: file is `method4_crosscohort.py` (no 'b') - canonical
+  method label `method4b_crosscohort` is used in figures, tables, config,
+  and `build_annotations.py:METHOD_SOURCES`. The diagnostic for THIS
+  method's failure mode lives in `method4b_anchor_diagnostic.py` (which
+  is *not* a linkage method itself - see that file's header).
+
+
 Unpaired analog of Method 4A: imputes RNA for every ATAC cell by anchor
 transfer from the RNA-only cohort in a shared gene-activity feature space,
 then runs the same per-gene meta-cell Pearson correlation as 4A within

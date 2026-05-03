@@ -1,0 +1,22 @@
+Method	Compartment	prop_snps	IBD prop_h2	Height prop_h2	EA prop_h2
+1. Distance window	epithelial	8.88%	39.9 ± 6.5%	22.8 ± 3.4%	16.1 ± 5.7%
+1. Distance window	immune	7.44%	30.5 ± 3.6%	16.7 ± 1.3%	13.0 ± 2.8%
+1. Distance window	stromal	6.46%	28.2 ± 5.7%	35.5 ± 3.7%	11.3 ± 5.4%
+2a. Co-access (Pearson)	epithelial	3.52%	25.0 ± 7.0%	13.2 ± 2.2%	7.3 ± 3.3%
+2a. Co-access (Pearson)	immune	5.84%	22.8 ± 3.0%	12.8 ± 1.2%	9.9 ± 2.3%
+2a. Co-access (Pearson)	stromal	2.84%	17.7 ± 4.1%	15.5 ± 2.0%	4.9 ± 3.8%
+2b. Co-access (GLASSO)	epithelial	1.23%	7.8 ± 2.2%	6.1 ± 1.5%	3.1 ± 2.9%
+2b. Co-access (GLASSO)	immune	1.07%	8.7 ± 5.3%	6.1 ± 1.0%	2.3 ± 1.7%
+2b. Co-access (GLASSO)	stromal	1.07%	6.2 ± 1.9%	6.6 ± 0.8%	2.5 ± 1.6%
+3. ABC (power-law)	epithelial	0.81%	5.9 ± 1.6%	5.7 ± 1.0%	2.1 ± 2.5%
+3. ABC (power-law)	immune	4.09%	10.9 ± 2.1%	8.3 ± 0.9%	5.8 ± 1.7%
+3. ABC (power-law)	stromal	0.81%	5.7 ± 1.9%	6.1 ± 0.9%	2.3 ± 2.6%
+4A. Paired Multiome r	epithelial	0.25%	5.1 ± 2.1%	2.2 ± 0.9%	3.7 ± 2.1%
+4A. Paired Multiome r	immune	0.54%	5.7 ± 2.5%	-0.3 ± 0.9%	-0.3 ± 2.1%
+4A. Paired Multiome r	stromal	0.34%	4.9 ± 1.8%	1.3 ± 1.1%	-1.1 ± 1.6%
+4B. Cross-cohort r	epithelial	0.23%	5.1 ± 2.5%	1.1 ± 0.7%	1.7 ± 2.4%
+4B. Cross-cohort r	immune	0.53%	6.9 ± 2.8%	-0.4 ± 0.9%	-0.1 ± 2.5%
+4B. Cross-cohort r	stromal	0.33%	-0.3 ± 1.5%	-0.3 ± 0.7%	-2.0 ± 1.7%
+5. rE2G (K562)	epithelial	8.88%	39.9 ± 6.5%	22.8 ± 3.4%	16.0 ± 5.7%
+5. rE2G (K562)	immune	7.44%	30.5 ± 3.6%	16.7 ± 1.3%	13.0 ± 2.8%
+5. rE2G (K562)	stromal	6.46%	28.1 ± 5.7%	35.5 ± 3.7%	11.3 ± 5.4%
