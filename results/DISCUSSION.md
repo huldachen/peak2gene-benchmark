@@ -55,7 +55,22 @@ Pliner et al. (2018) define Cicero as graphical lasso applied to overlapping 500
 
 **At the level of sLDSC heritability partitioning, they are not interchangeable.** Running both as separate methods on the same input - Method 2a (raw Pearson, ArchR-equivalent) at r >= 0.25, and Method 2b (GLASSO with alpha = 0.5 and a 250 kb distance scale) at partial-r >= 0.05 - reveals two reproducible, quantitative differences and one qualitative one.
 
-The first is structural. Method 2b retains 7-14 % of Method 2a's edges (epithelial: 91 k of 1.20 M; immune: 85 k of 599 k; stromal: 79 k of 641 k). The GLASSO step is doing what Cicero claims it does - aggressively pruning indirect / mediated edges - and the surviving 7-14 % are the direct partial correlations. The second is a per-SNP enrichment shift. The smaller GLASSO annotation is more concentrated per SNP: IBD enrichment moves upward going from 2a to 2b across all three compartments, with an average shift of +1.1x and a maximum of +4.3x in the immune compartment (3.91 +/- 0.51x to 8.18 +/- 4.95x). The raw-Pearson approximation is *conservative* in the per-SNP enrichment sense - it under-reports how concentrated co-accessibility-driven heritability really is.
+The first is structural. Method 2b retains 7-14 % of Method 2a's edges (epithelial: 91 k of 1.20 M; immune: 85 k of 599 k; stromal: 79 k of 641 k). The GLASSO step is doing what Cicero claims it does - aggressively pruning indirect / mediated edges - and the surviving 7-14 % are the direct partial correlations. The second is a per-SNP enrichment shift, and it needs its interval stated
+because the direction is not uniform. Going from 2a to 2b, IBD enrichment moves
+*up* in immune (+4.3 units: 3.91 +/- 0.51x to 8.18 +/- 4.95x) but slightly
+*down* in epithelial (-0.8: 7.10 +/- 2.00x to 6.34 +/- 1.82x) and stromal
+(-0.4: 6.26 +/- 1.44x to 5.85 +/- 1.81x); the +1.1x average is carried entirely
+by the immune cell. None of the three IBD shifts is significant on its own - the
+immune shift is +4.27 +/- 4.98 (z = 0.9) under a conservative propagation that
+assumes the two estimates are uncorrelated, which overstates the error for
+overlapping annotations but still leaves the interval spanning zero. We
+therefore do **not** claim that raw-Pearson is systematically conservative in
+the per-SNP enrichment sense; on this dataset the enrichment evidence for
+non-equivalence is confined to one cell and is not individually significant.
+The non-equivalence that does clear 95% is on the Height control in immune,
+where both metrics agree: enrichment +3.54 +/- 0.94 (z = 3.8) and the tau\*
+flip from -3.4 to +0.9. Per-cell numbers with intervals are in
+`results/tables/table5_claim1_equivalence.tsv`.
 
 The third difference, and the one with the largest practical consequence, is in the tau\* coefficient (Row B of Figure 3). tau\* is the contribution of an annotation to heritability *beyond* the ~97 features of baseline-LD v2.2 (Gazal et al., 2017) - the standard size-invariant metric for asking "is this annotation telling us something baseline-LD doesn't already cover?" For Height in the immune compartment, Method 2a's tau\* is **-3.4** (highly significant negative): the raw-Pearson annotation is *redundant with baseline-LD*, and the model fits better when the annotation is down-weighted. For the same cell, Method 2b's tau\* is **+0.9** (benign): the GLASSO-pruned annotation no longer leaks into baseline-LD redundancy. GLASSO is removing precisely the indirect peak-peak edges that overlap with baseline-LD's existing annotation set - which means raw Pearson is silently importing those overlaps into the heritability model.
 

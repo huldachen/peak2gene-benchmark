@@ -1,0 +1,10 @@
+trait	compartment	enr_2a_pearson	enr_2a_se	enr_2b_glasso	enr_2b_se	enr_delta	enr_delta_se_conservative	enr_delta_z	enr_shift_significant	tau_z_2a	tau_z_2b	tau_nonequivalent
+IBD	epithelial	7.10	2.00	6.34	1.82	-0.76	2.70	-0.28	False	+1.08	+0.24	False
+IBD	immune	3.91	0.51	8.18	4.95	+4.27	4.98	+0.86	False	+0.39	+0.18	False
+IBD	stromal	6.26	1.44	5.85	1.81	-0.41	2.32	-0.18	False	+0.63	-0.54	False
+Height	epithelial	3.75	0.61	4.93	1.20	+1.18	1.35	+0.88	False	-0.24	+0.17	False
+Height	immune	2.19	0.20	5.73	0.91	+3.54	0.94	+3.78	True	-3.44	+0.85	True
+Height	stromal	5.47	0.69	6.22	0.77	+0.75	1.03	+0.72	False	+1.88	+1.61	False
+EA	epithelial	2.07	0.93	2.52	2.33	+0.45	2.51	+0.18	False	-1.12	-0.07	False
+EA	immune	1.69	0.40	2.14	1.56	+0.45	1.61	+0.28	False	-0.26	-0.52	False
+EA	stromal	1.72	1.33	2.36	1.50	+0.64	2.01	+0.32	False	-1.19	-1.31	False
