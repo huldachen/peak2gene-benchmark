@@ -1,0 +1,48 @@
+compartment	cell_type	n_cells	mean_agreement	median_agreement	interpretable
+epithelial	Enterocytes	4459	0.6064	0.6667	True
+epithelial	Immature Enterocytes	5425	0.1735	0.1667	True
+epithelial	TA1	9737	0.0343	0.0333	True
+epithelial	Immature Goblet	5043	0.0331	0.0333	True
+epithelial	CyclingTA 1	6797	0.0249	0.0000	True
+epithelial	Best4+ Enterocytes	2431	0.0045	0.0000	True
+epithelial	Goblet	1375	0.0008	0.0000	True
+epithelial	TA2	5784	0.0002	0.0000	True
+epithelial	Stem	2237	0.0000	0.0000	True
+epithelial	CyclingTA 2	719	0.0000	0.0000	True
+epithelial	Tuft	155	0.0000	0.0000	True
+epithelial	Enterochromaffin	137	0.0000	0.0000	True
+epithelial	EnteroendocrineUn	84	0.0000	0.0000	False
+epithelial	L Cells	67	0.0000	0.0000	False
+epithelial	EnteroendocrineUn 1	64	0.0000	0.0000	False
+epithelial	NEUROG3high	33	0.0000	0.0000	False
+epithelial	I Cells	15	0.0000	0.0000	False
+epithelial	D Cells	11	0.0000	0.0000	False
+epithelial	Mo Cells	5	0.0000	0.0000	False
+epithelial	S Cells	2	0.0000	0.0000	False
+immune	Mono_Macrophages	4687	0.0314	0.0000	True
+immune	CyclingImmune	494	0.0024	0.0000	True
+immune	CD8	5585	0.0000	0.0000	True
+immune	Plasma	5160	0.0000	0.0000	True
+immune	CD4	3570	0.0000	0.0000	True
+immune	B Cells	3267	0.0000	0.0000	True
+immune	NK	1269	0.0000	0.0000	True
+immune	Mast	813	0.0000	0.0000	True
+immune	ILC	150	0.0000	0.0000	True
+immune	DC	130	0.0000	0.0000	True
+immune	T Cells	16	0.0000	0.0000	False
+stromal	Myofibroblasts/SM DES High	2872	0.6756	0.7000	True
+stromal	Glia	1391	0.2892	0.3000	True
+stromal	Endothelial-Venules	931	0.0666	0.0667	True
+stromal	Neurons	132	0.0419	0.0333	True
+stromal	Endothelial-CD36+ Microvascular	1964	0.0368	0.0333	True
+stromal	ICC	367	0.0339	0.0333	True
+stromal	Crypt Fibroblasts 3 RSPO3+	3736	0.0008	0.0000	True
+stromal	Adipocytes	60	0.0006	0.0000	False
+stromal	Myofibroblasts/SM 1	8724	0.0004	0.0000	True
+stromal	Pericytes	1026	0.0004	0.0000	True
+stromal	Lymphatic Endothelial Cells	1047	0.0001	0.0000	True
+stromal	Crypt Fibroblasts 2	1616	0.0000	0.0000	True
+stromal	Crypt Fibroblasts 1 WNT2B+	4633	0.0000	0.0000	True
+stromal	Myofibroblasts/SM 3	1707	0.0000	0.0000	True
+stromal	Villus Fibroblasts WNT5B+	1474	0.0000	0.0000	True
+stromal	Myofibroblasts/SM 2	1052	0.0000	0.0000	True

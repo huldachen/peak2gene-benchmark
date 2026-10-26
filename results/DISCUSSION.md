@@ -30,13 +30,17 @@ errors. The same point is sharper in the tau\* (coefficient z-score) view
 shown in Row B of Figure 3: tau\* measures the *unique* heritability signal
 contributed beyond the baseline-LD v2.2 model and is invariant to
 annotation size, which makes it the more rigorous comparison metric across
-methods that span a 25x range in coverage. Method 4A's tau\* values exceed
-their respective standard errors in all three compartments (i.e., the
-annotation contributes signal not already captured by the ~97 features
-of baseline-LD), while Methods 1, 2a, 3, and 5 cluster near or below zero
-in most cells - confirming that the size-corrected per-SNP signal is
-genuinely strongest in paired Multiome correlation rather than an
-artefact of the small-annotation enrichment inflation seen in Row A.
+methods that span a 25x range in coverage. On IBD, however, tau\* does **not** separate the
+methods: no method's IBD tau\* reaches significance (all |z| < 1.96), Method 4A
+exceeds its own standard error in two of three compartments rather than all
+three (epithelial +1.24, stromal +1.41, immune +0.40), and the single largest
+IBD tau\* belongs to Method 1 / Method 5 (epithelial +1.68) -- not to 4A. The
+honest reading is therefore narrower than the enrichment ranking suggests:
+**the size-independent metric does not confirm that paired Multiome's per-SNP
+advantage is biological rather than a small-annotation effect; it leaves the
+question open on this dataset.** What tau\* does resolve is Claim 1, on the
+Height control in immune, where the Pearson-to-GLASSO flip (-3.4 -> +0.9) is
+significant. Per-cell tau\* values: `results/tables/table6_tau_star.tsv`.
 A complementary view of total heritability *coverage* (prop_h2; Table 4)
 shows the converse trade-off: Method 4A captures only 5-6 % of IBD
 heritability per compartment despite its large per-SNP enrichment,

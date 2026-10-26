@@ -1,0 +1,25 @@
+Method	compartment	prop_snps_%	IBD	Height	EA
+1. Distance window	epithelial	8.88	1.68	-0.84	-0.40
+1. Distance window	immune	7.44	0.71	-3.52	-0.16
+1. Distance window	stromal	6.46	0.92	3.74	-1.38
+2a. Co-access (Pearson)	epithelial	3.52	1.08	-0.24	-1.12
+2a. Co-access (Pearson)	immune	5.84	0.39	-3.44	-0.26
+2a. Co-access (Pearson)	stromal	2.84	0.63	1.88	-1.19
+2b. Co-access (GLASSO)	epithelial	1.23	0.24	0.17	-0.07
+2b. Co-access (GLASSO)	immune	1.07	0.18	0.85	-0.52
+2b. Co-access (GLASSO)	stromal	1.07	-0.54	1.61	-1.31
+3. ABC (power-law)	epithelial	0.81	-0.15	0.82	-0.09
+3. ABC (power-law)	immune	4.09	0.14	-3.07	-0.13
+3. ABC (power-law)	stromal	0.81	-0.46	1.07	-0.04
+4A. Paired Multiome r	epithelial	0.25	1.24	0.75	1.54
+4A. Paired Multiome r	immune	0.54	0.40	-2.08	-0.75
+4A. Paired Multiome r	stromal	0.34	1.41	-0.31	-1.48
+4B. Cross-cohort r	epithelial	0.23	1.27	0.14	0.45
+4B. Cross-cohort r	immune	0.53	0.80	-2.13	-0.54
+4B. Cross-cohort r	stromal	0.33	-1.54	-2.42	-1.92
+5. rE2G (K562)	epithelial	8.88	1.68	-0.84	-0.40
+5. rE2G (K562)	immune	7.44	0.71	-3.52	-0.16
+5. rE2G (K562)	stromal	6.46	0.92	3.74	-1.38
+5c. rE2G (continuous)	epithelial	8.84	1.67	-0.84	-0.40
+5c. rE2G (continuous)	immune	7.42	0.70	-3.53	-0.16
+5c. rE2G (continuous)	stromal	6.42	0.91	3.72	-1.39
